@@ -1,0 +1,1 @@
+web: gunicorn contracts-and-reprogrammings.wsgi:application --log-file -

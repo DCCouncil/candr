@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Contracts and Reprogrammings sent for Council Approval</h1>
+<table id="myTable" class=" table" cellspacing="0" width="100%">
+<thead><tr><th>LIMS Number</th><th>Action Date</th><th>Committee Referral</th><th>Description</th><th>Issues</th></tr></thead><tbody>
+{% for d in documents %}
+<tr><td>{{d.lims_number}}</td><td>{{d.actions_date}}</td><td>{% for c in d.referral.all %}{{c.name}}{%endfor%}</td><td>{{d.description}}</td><td>{{d.issues}}</td></tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
+
+
+{%block extra_js%}
+<script>
+
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+</script>
+{% endblock %}
